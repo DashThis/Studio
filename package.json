@@ -22,7 +22,7 @@
   },
   "build": {
     "appId": "com.dashthisstudio",
-    "productName": "DashThis Studio",
+    "productName": "Studio",
     "copyright": "Copyright © 2019 DashThis",
     "mac": {
       "category": "com.dashthis.studio.stats"
