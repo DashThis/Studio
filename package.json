@@ -21,13 +21,6 @@
     "url": "https://dashthis.com"
   },
   "build": {
-    "publish": [
-      {
-        "provider": "generic",
-        "url": "https://dashthis.blob.core.windows.net/cdn/studio/v2",
-        "channel": "latest"
-      }
-    ],
     "appId": "com.dashthisstudio",
     "productName": "DashThis Studio",
     "copyright": "Copyright © 2019 DashThis",
