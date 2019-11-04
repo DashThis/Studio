@@ -27,8 +27,8 @@ notifications:
     rooms:
       - dashthis:mU4MI8Q9FSHGDGsMyEAq4T2e
     template:
-      - "Studio has been releases success"
-      - "Releases details: https://github.com/DashThis/Studio/releases|Download"
+      - "Studio has been released success"
+      - "Releases details: <https://github.com/DashThis/Studio/releases|Download>"
       - "Build details: <%{build_url}|#%{build_number}>"
 
 
