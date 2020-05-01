@@ -12,7 +12,7 @@
   "dependencies": {},
   "devDependencies": {
     "electron": "^8.2.2",
-    "electron-builder": "^22.5.1"
+    "electron-builder": "^22.6.0"
   },
   "author": {
     "name": "DashThis",
