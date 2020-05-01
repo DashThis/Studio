@@ -1,6 +1,6 @@
 {
   "name": "@dt/studio-app",
-  "version": "3.0.0-alpha.2",
+  "version": "3.0.0-alpha.3",
   "private": true,
   "license": "UNLICENSED",
   "main": "build/electron.js",
@@ -12,7 +12,7 @@
   "dependencies": {},
   "devDependencies": {
     "electron": "^8.2.2",
-    "electron-builder": "^22.4.1"
+    "electron-builder": "^22.6.0"
   },
   "author": {
     "name": "DashThis",
@@ -22,7 +22,7 @@
   "build": {
     "appId": "com.dashthisstudio",
     "productName": "Studio",
-    "copyright": "Copyright © 2019 DashThis",
+    "copyright": "Copyright © 2020 DashThis",
     "mac": {
       "category": "com.dashthis.studio.stats"
     },
