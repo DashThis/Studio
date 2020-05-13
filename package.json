@@ -1,6 +1,6 @@
 {
   "name": "@dt/studio-app",
-  "version": "3.0.0-alpha.7",
+  "version": "3.0.0-beta.1",
   "private": true,
   "license": "UNLICENSED",
   "main": "build/electron.js",
@@ -20,7 +20,7 @@
     "url": "https://dashthis.com"
   },
   "build": {
-    "appId": "com.dashthisstudio",
+    "appId": "com.studio3",
     "productName": "Studio 3",
     "copyright": "Copyright © 2020 DashThis",
     "mac": {
