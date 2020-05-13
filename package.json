@@ -1,6 +1,6 @@
 {
   "name": "@dt/studio-app",
-  "version": "3.0.0-alpha.8",
+  "version": "3.0.0-beta.1",
   "private": true,
   "license": "UNLICENSED",
   "main": "build/electron.js",
