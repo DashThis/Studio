@@ -1,6 +1,6 @@
 {
   "name": "@dt/studio-app",
-  "version": "3.0.0-beta.14",
+  "version": "3.0.0-beta.15",
   "private": true,
   "license": "UNLICENSED",
   "main": "build/electron.js",
@@ -11,7 +11,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "electron": "^10.0.0",
+    "electron": "^11.2.1",
     "electron-builder": "^22.8.1"
   },
   "author": {
