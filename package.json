@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "main": "build/electron.js",
   "homepage": "./",
-  "description": "Accounts management for DashThis",
+  "description": "Accounts management for DashThis app",
   "scripts": {
     "release": "electron-builder"
   },
