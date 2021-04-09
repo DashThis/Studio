@@ -11,8 +11,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "electron": "^11.2.1",
-    "electron-builder": "^22.8.1"
+    "electron": "11.2.1",
+    "electron-builder": "22.10.4"
   },
   "author": {
     "name": "DashThis",
