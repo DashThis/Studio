@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - '15.12.0'
+  - '16.13.1'
 
 # Always run two parallel builds: one on mac and one on linux
 # the linux build will use wine to be able to build windows and
@@ -9,9 +9,9 @@ node_js:
 matrix:
   include:
     - os: osx
-      osx_image: xcode11.2
+      osx_image: xcode13.2
       language: node_js
-      node_js: "15.12.0"
+      node_js: "16.13.1"
       env:
         - ELECTRON_CACHE=$HOME/.cache/electron
         - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
@@ -34,8 +34,9 @@ notifications:
 
 # cache some files for faster builds
 cache:
-  yarn: true
+  npm: false
   directories:
+    - "~/.pnpm-store"
     - node_modules
     - $HOME/.cache/electron
     - $HOME/.cache/electron-builder
@@ -44,15 +45,16 @@ cache:
 before_install:
   - |
     if [ "$TRAVIS_OS_NAME" == "osx" ]; then
-      mkdir -p /tmp/git-lfs && curl -L https://github.com/github/git-lfs/releases/download/v2.3.1/git-lfs-$([ "$TRAVIS_OS_NAME" == "linux" ] && echo "linux" || echo "darwin")-amd64-2.3.1.tar.gz | tar -xz -C /tmp/git-lfs --strip-components 1
+      mkdir -p /tmp/git-lfs && curl -L https://github.com/github/git-lfs/releases/download/v3.0.2/git-lfs-$([ "$TRAVIS_OS_NAME" == "linux" ] && echo "linux" || echo "darwin")-amd64-2.3.1.tar.gz | tar -xz -C /tmp/git-lfs --strip-components 1
       export PATH="/tmp/git-lfs:$PATH"
     fi
 before_script:
   - git lfs pull
-  - nvm install v12.22.1
-  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.19.1
+  - nvm install v16.13.1
+  - curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm@6
+  - pnpm config set store-dir ~/.pnpm-store
   - export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-  - yarn
+  - pnpm i --no-frozen-lockfile
 
 script:
   - echo "skipping tests"
