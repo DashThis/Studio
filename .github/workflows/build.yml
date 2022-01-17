@@ -27,16 +27,18 @@ jobs:
       - name: Install Packages
         run: pnpm i --no-frozen-lockfile
       
-      - name: Releases
+      - name: Release on mac
+        if: startsWith(matrix.os, 'macos')
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: | 
-            if["$RUNNER_OS" == "MacOS"]; then 
-              pnpm run release
-            else
-              pnpm run release-win
-            fi
-        shell: bash
+        run: |
+          pnpm run release
+      - name: Release on PC
+        if: startsWith(matrix.os, 'windows')
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          pnpm run release-win
         
       # - name: Build/release Electron app
         #uses: samuelmeuli/action-electron-builder@v1
