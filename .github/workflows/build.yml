@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest] #, ubuntu-latest, windows-latest]
 
     steps:
       - name: Check out Git repository
@@ -26,7 +26,9 @@ jobs:
       
       - name: Install Packages
         run: pnpm i --no-frozen-lockfile
-
+      
+      - name: Release
+        run: pnpm run release
       # - name: Build/release Electron app
         #uses: samuelmeuli/action-electron-builder@v1
         #with:
