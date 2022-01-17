@@ -7,7 +7,7 @@
   "homepage": "./",
   "description": "Accounts management for DashThis app",
   "scripts": {
-    "release": "electron-builder",
+    "release": "GH_TOKEN=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 electron-builder",
     "release-win-linux": "electron-builder --linux AppImage --win"
   },
   "devDependencies": {
