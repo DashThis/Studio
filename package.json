@@ -9,7 +9,7 @@
   "scripts": {
     "release": "electron-builder",
     "release-win-linux": "electron-builder --linux AppImage --win",
-    "release-win": "electron-builder AppImage --win"
+    "release-win": "electron-builder --win"
   },
   "devDependencies": {
     "electron": "^16.0.6",
