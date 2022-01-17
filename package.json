@@ -9,7 +9,7 @@
   "scripts": {
     "release": "electron-builder",
     "release-win": "electron-builder --win",
-    "release-arm": "electron-builder --arm64",
+    "release-arm": "electron-builder --arm64"
   },
   "devDependencies": {
     "electron": "^16.0.6",
