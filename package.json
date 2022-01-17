@@ -8,7 +8,6 @@
   "description": "Accounts management for DashThis app",
   "scripts": {
     "release": "electron-builder",
-    "release-win-linux": "electron-builder --linux AppImage --win",
     "release-win": "electron-builder --win"
   },
   "devDependencies": {
