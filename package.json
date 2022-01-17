@@ -7,9 +7,8 @@
   "homepage": "./",
   "description": "Accounts management for DashThis app",
   "scripts": {
-    "release": "electron-builder",
-    "release-win": "electron-builder --win",
-    "release-arm": "electron-builder --arm64"
+    "release": "electron-builder --arm64 --mac",
+    "release-win": "electron-builder --win"
   },
   "devDependencies": {
     "electron": "^16.0.6",
