@@ -1,6 +1,6 @@
 {
-  "name": "@dt/studio-app",
-  "version": "3.0.0-beta.24",
+  "name": "@dashthis/studio-app",
+  "version": "3.0.0-beta.25",
   "private": true,
   "license": "UNLICENSED",
   "main": "build/electron.js",
@@ -9,10 +9,9 @@
   "scripts": {
     "release": "electron-builder"
   },
-  "dependencies": {},
   "devDependencies": {
-    "electron": "^11.2.1",
-    "electron-builder": "22.10.4"
+    "electron": "^16.0.6",
+    "electron-builder": "22.14.5"
   },
   "author": {
     "name": "DashThis",
