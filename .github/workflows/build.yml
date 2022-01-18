@@ -1,6 +1,10 @@
 name: Build/release
 
-on: push
+on: 
+  workflow_dispatch:
+  push: 
+    branches: 
+      - master
 
 jobs:
   release:
@@ -8,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-11, windows-latest]
+        os: [macos-latest, windows-latest]
 
     steps:
       - name: Check out Git repository
@@ -32,10 +36,25 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
-          pnpm run release
+          pnpm run release-mac
       - name: Release on PC
         if: startsWith(matrix.os, 'windows')
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           pnpm run release-win
+          
+      - name: Slack Notification on Success
+        if: ${{success()}}
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_CUSTTEAM }}
+          SLACK_PAYLOAD: '{"text":"A new Studio version is available!"}'
+        
+      - name: Slack Notification on Failure
+        if: ${{failure()}}
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_CUSTTEAM }}        
+          SLACK_PAYLOAD: '{"text":"Studio release has failed. See logs for more details."}'
+          
+        uses: Ilshidur/action-slack@2.0.2
+
