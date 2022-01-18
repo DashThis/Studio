@@ -50,11 +50,11 @@ jobs:
           status: custom
           custom_payload: |
             {
-              text: "A new Studio release is available here: https://github.com/DashThis/Studio/releases",
+              text: "Studio has been built successfully for ${{ matrix.os }}.",
               attachments: [{
                 fallback: 'fallback',
                 color: 'good',
-                title: 'New release'
+                title: 'New build'
               }]
             }
         env:
@@ -66,7 +66,7 @@ jobs:
           status: custom
           custom_payload: |
             {
-              text: "Studio release has failed.",
+              text: "Studio build has failed for ${{ matrix.os }}.",
               attachments: [{
                 fallback: 'fallback',
                 color: 'bad',
