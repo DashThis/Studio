@@ -18,31 +18,31 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v1
 
-      #- name: Install Node.js, NPM and Yarn
-        #uses: actions/setup-node@v1
-        #with:
-          #node-version: 16.13.1
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.13.1
       
-      #- name: Install PNPM
-        #uses: pnpm/action-setup@v2.0.1
-        #with:
-          #version: 6.25.1
+      - name: Install PNPM
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.25.1
       
       - name: Install Packages
         run: pnpm i --no-frozen-lockfile
       
-      #- name: Release on mac
-        #if: startsWith(matrix.os, 'macos')
-        #env:
-          #GITHUB_TOKEN: ${{ github.token }}
-        #run: |
-          #pnpm run release-mac
-      #- name: Release on PC
-        #if: startsWith(matrix.os, 'windows')
-        #env:
-          #GITHUB_TOKEN: ${{ github.token }}
-        #run: |
-          #pnpm run release-win
+      - name: Release on mac
+        if: startsWith(matrix.os, 'macos')
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          pnpm run release-mac
+      - name: Release on PC
+        if: startsWith(matrix.os, 'windows')
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          pnpm run release-win
       - name: Slack notification on Success
         if: ${{ success() }}
         uses: 8398a7/action-slack@v3
