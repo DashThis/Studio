@@ -1,6 +1,7 @@
 name: build
 
 on: 
+  workflow_dispatch:
   push: 
     branches: 
       - master
@@ -42,3 +43,15 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           pnpm run release-win
+      - name: Slack notification on Success
+        if: ${{ success() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: 'A new Studio release is available here: https://github.com/DashThis/Studio/releases'
+      - name: Slack notification on Failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: 'Studio release failed.'
