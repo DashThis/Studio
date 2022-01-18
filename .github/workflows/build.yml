@@ -28,8 +28,8 @@ jobs:
         #with:
           #version: 6.25.1
       
-      #- name: Install Packages
-        #run: pnpm i --no-frozen-lockfile
+      - name: Install Packages
+        run: pnpm i --no-frozen-lockfile
       
       #- name: Release on mac
         #if: startsWith(matrix.os, 'macos')
@@ -54,15 +54,24 @@ jobs:
               attachments: [{
                 fallback: 'fallback',
                 color: 'good',
-                title: 'New release',
-                text: 'Succeeded'
+                title: 'New release'
               }]
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-      #- name: Slack notification on Failure
-        #if: ${{ failure() }}
-        #uses: 8398a7/action-slack@v3
-        #env:
-          #SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          #SLACK_MESSAGE: 'Studio release failed.'
+      - name: Slack notification on Failure
+        if: ${{ failure() }}
+        uses: 8398a7/action-slack@v3
+        with:
+          status: custom
+          custom_payload: |
+            {
+              text: "Studio release has failed.",
+              attachments: [{
+                fallback: 'fallback',
+                color: 'bad',
+                title: 'Release Failure'
+              }]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
