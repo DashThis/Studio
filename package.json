@@ -7,8 +7,12 @@
   "homepage": "./",
   "description": "Accounts management for DashThis app",
   "scripts": {
-    "release": "electron-builder",
+    "release-mac": "electron-builder --mac",
     "release-win": "electron-builder --win"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DashThis/Stack.git"
   },
   "devDependencies": {
     "electron": "^16.0.6",
