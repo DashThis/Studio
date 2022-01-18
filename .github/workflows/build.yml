@@ -43,17 +43,3 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           pnpm run release-win
-          
-      - name: Slack Notification on Success
-        if: ${{success()}}
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_CUSTTEAM }}
-          SLACK_PAYLOAD: '{"text":"A new Studio version is available!"}'
-        uses: Ilshidur/action-slack@2.0.2
-      
-      - name: Slack Notification on Failure
-        if: ${{ failure() }}
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_CUSTTEAM }}
-          SLACK_PAYLOAD: '{"text":"Studio release has failed. See logs for more details."}'
-        uses: Ilshidur/action-slack@2.0.2
