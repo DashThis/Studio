@@ -18,40 +18,48 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v1
 
-      - name: Install Node.js, NPM and Yarn
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16.13.1
+      #- name: Install Node.js, NPM and Yarn
+        #uses: actions/setup-node@v1
+        #with:
+          #node-version: 16.13.1
       
-      - name: Install PNPM
-        uses: pnpm/action-setup@v2.0.1
-        with:
-          version: 6.25.1
+      #- name: Install PNPM
+        #uses: pnpm/action-setup@v2.0.1
+        #with:
+          #version: 6.25.1
       
-      - name: Install Packages
-        run: pnpm i --no-frozen-lockfile
+      #- name: Install Packages
+        #run: pnpm i --no-frozen-lockfile
       
-      - name: Release on mac
-        if: startsWith(matrix.os, 'macos')
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          pnpm run release-mac
-      - name: Release on PC
-        if: startsWith(matrix.os, 'windows')
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          pnpm run release-win
+      #- name: Release on mac
+        #if: startsWith(matrix.os, 'macos')
+        #env:
+          #GITHUB_TOKEN: ${{ github.token }}
+        #run: |
+          #pnpm run release-mac
+      #- name: Release on PC
+        #if: startsWith(matrix.os, 'windows')
+        #env:
+          #GITHUB_TOKEN: ${{ github.token }}
+        #run: |
+          #pnpm run release-win
       - name: Slack notification on Success
         if: ${{ success() }}
-        uses: rtCamp/action-slack-notify@v2
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took,pullRequest # selectable (default: repo,message)
+          custom_payload: |
+            {
+            attachments: [{
+              text: 'A new Studio release is available here: https://github.com/DashThis/Studio/releases'
+              }]
+            }
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: 'A new Studio release is available here: https://github.com/DashThis/Studio/releases'
-      - name: Slack notification on Failure
-        if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_MESSAGE: 'Studio release failed.'
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+      #- name: Slack notification on Failure
+        #if: ${{ failure() }}
+        #uses: 8398a7/action-slack@v3
+        #env:
+          #SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          #SLACK_MESSAGE: 'Studio release failed.'
