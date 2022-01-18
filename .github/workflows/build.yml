@@ -47,12 +47,15 @@ jobs:
         if: ${{ success() }}
         uses: 8398a7/action-slack@v3
         with:
-          status: ${{ job.status }}
-          fields: eventName,workflow # selectable (default: repo,message)
+          status: custom
           custom_payload: |
             {
+              text: "A new Studio release is available here: https://github.com/DashThis/Studio/releases",
               attachments: [{
-                text: `A new Studio release is available here: https://github.com/DashThis/Studio/releases`
+                fallback: 'fallback',
+                color: 'good',
+                title: 'New release',
+                text: 'Succeeded'
               }]
             }
         env:
