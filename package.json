@@ -7,8 +7,6 @@
   "homepage": "./",
   "description": "Accounts management for DashThis app",
   "scripts": {
-    "release-mac": "electron-builder --mac --publish=always",
-    "release-mac-arm64": "electron-builder --mac --arm64 --publish=always",
     "release-win": "electron-builder --win --publish=always"
   },
   "devDependencies": {
@@ -32,6 +30,13 @@
     },
     "afterSign": "electron-builder-notarize",
     "mac": {
+      target: {
+            target: 'default',
+            arch: [
+              'x64',
+              'arm64'
+            ]
+      },
       "hardenedRuntime": true,
       "gatekeeperAssess": false,
       "entitlements": "entitlements.mac.plist",
