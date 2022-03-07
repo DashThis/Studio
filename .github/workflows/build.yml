@@ -35,8 +35,11 @@ jobs:
         if: startsWith(matrix.os, 'macos')
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          pnpm run release-mac
+        uses: samuelmeuli/action-electron-builder@v1
+        with:
+          mac_certs: ${{ secrets.mac_certs }}
+          mac_certs_password: ${{ secrets.mac_certs_password }}
+          build_script_name: release-mac
       - name: Release on PC
         if: startsWith(matrix.os, 'windows')
         env:
