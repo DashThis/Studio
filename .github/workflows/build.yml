@@ -41,6 +41,7 @@ jobs:
           mac_certs: ${{ secrets.mac_certs }}
           mac_certs_password: ${{ secrets.mac_certs_password }}
           build_script_name: release-mac
+          skip_build: true
       - name: Release on PC
         if: startsWith(matrix.os, 'windows')
         env:
