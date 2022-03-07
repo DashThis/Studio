@@ -8,6 +8,7 @@
   "description": "Accounts management for DashThis app",
   "scripts": {
     "release-mac": "electron-builder --mac --publish=always",
+    "release-mac-arm64": "electron-builder --mac --arm64 --publish=always",
     "release-win": "electron-builder --win --publish=always"
   },
   "devDependencies": {
@@ -32,8 +33,8 @@
     "mac": {
       "hardenedRuntime": true,
       "gatekeeperAssess": false,
-      "entitlements": "build/entitlements.mac.plist",
-      "entitlementsInherit": "build/entitlements.mac.plist",
+      "entitlements": "entitlements.mac.plist",
+      "entitlementsInherit": "entitlements.mac.plist",
       "category": "com.dashthis.studio.stats"
     },
     "files": [
