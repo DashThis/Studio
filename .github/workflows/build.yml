@@ -42,11 +42,11 @@ jobs:
         if: startsWith(matrix.os, 'macos')
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          API_KEY_ID: ${{ secrets.api_key_id }}
+          API_KEY_ISSUER_ID: ${{ secrets.api_key_issuer_id }}
         uses: samuelmeuli/action-electron-builder@v1
         with:
           github_token: ${{ github.token }}
-          API_KEY_ID: ${{ secrets.api_key_id }}
-          API_KEY_ISSUER_ID: ${{ secrets.api_key_issuer_id }}
           mac_certs: ${{ secrets.mac_certs }}
           mac_certs_password: ${{ secrets.mac_certs_password }}
           build_script_name: release-mac
