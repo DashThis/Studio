@@ -30,6 +30,7 @@
     "dmg": {
       "sign": false
     },
+    "afterSign": "electron-builder-notarize",
     "mac": {
       "hardenedRuntime": true,
       "gatekeeperAssess": false,
