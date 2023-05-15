@@ -1,6 +1,6 @@
 {
   "name": "@dashthis/studio-app",
-  "version": "3.4.4",
+  "version": "3.4.5",
   "private": true,
   "license": "UNLICENSED",
   "main": "build/electron.js",
