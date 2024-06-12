@@ -47,8 +47,8 @@ jobs:
         uses: samuelmeuli/action-electron-builder@v1
         with:
           github_token: ${{ github.token }}
-          mac_certs: ${{ secrets.mac_certs }}
-          mac_certs_password: ${{ secrets.mac_certs_password }}
+          mac_certs: ${{ secrets.macos_codesign_cert }}
+          mac_certs_password: ${{ secrets.macos_codesign_cert_password }}
       - name: Release on PC
         if: startsWith(matrix.os, 'windows')
         env:
