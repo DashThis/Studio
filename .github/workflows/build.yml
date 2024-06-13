@@ -46,7 +46,7 @@ jobs:
           APPLE_ID: ${{ secrets.apple_id }}
           APPLE_ID_PASSWORD: ${{ secrets.apple_id_app_specific_pwd }}
           APPLEIDPASS: ${{ secrets.apple_id_app_specific_pwd }}
-          TEAM_ID: ${{ secrets.apple_id_team_id }}
+          APPLE_TEAM_ID: ${{ secrets.apple_id_team_id }}
         uses: samuelmeuli/action-electron-builder@v1
         with:
           github_token: ${{ github.token }}
