@@ -13,8 +13,8 @@
     "dotenv": "16.0.0",
     "electron": "23.3.13",
     "electron-builder": "23.6.0",
-    "electron-builder-notarize": "1.5.2",
-    "@electron/notarize": "^2.3.2"
+    "electron-builder-notarize": "1.5.0",
+    "electron-notarize": "1.2.2"
   },
   "author": {
     "name": "DashThis",

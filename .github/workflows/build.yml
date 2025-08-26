@@ -36,22 +36,19 @@ jobs:
         # Import Apple API key for app notarization on macOS
         run: |
           mkdir -p ~/private_keys/
-          echo '${{ secrets.appstore_api_key_file }}' > ~/private_keys/AuthKey_${{ secrets.appstore_api_key_id }}.p8
+          echo '${{ secrets.api_key }}' > ~/private_keys/AuthKey_${{ secrets.api_key_id }}.p8
 
       - name: Release on mac
         if: startsWith(matrix.os, 'macos')
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          # macOS notarization API key
-          APPLE_ID: ${{ secrets.apple_id }}
-          APPLE_ID_PASSWORD: ${{ secrets.apple_id_app_specific_pwd }}
-          APPLEIDPASS: ${{ secrets.apple_id_app_specific_pwd }}
-          APPLE_TEAM_ID: ${{ secrets.apple_id_team_id }}
+          API_KEY_ID: ${{ secrets.api_key_id }}
+          API_KEY_ISSUER_ID: ${{ secrets.api_key_issuer_id }}
         uses: samuelmeuli/action-electron-builder@v1
         with:
           github_token: ${{ github.token }}
-          mac_certs: ${{ secrets.macos_codesign_cert }}
-          mac_certs_password: ${{ secrets.macos_codesign_cert_password }}
+          mac_certs: ${{ secrets.mac_certs }}
+          mac_certs_password: ${{ secrets.mac_certs_password }}
       - name: Release on PC
         if: startsWith(matrix.os, 'windows')
         env:
